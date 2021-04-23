@@ -29,7 +29,7 @@ export default class ResearchScreen extends Component {
         </View>
 
         <FlatList
-          showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={true}
           data={AllChaptersData}
           numColumns={2}
           renderItem={({ item }) => (
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "white",
+    alignItems: "center",
   },
   touchables: {
     width: 140,

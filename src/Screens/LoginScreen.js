@@ -66,51 +66,78 @@ export default class LoginScreen extends Component {
 
   DisplayModal = () => {
     return (
-      <Modal animationType="slide" visible={this.state.modalVisible}>
+      <Modal
+        animationType="slide"
+        visible={this.state.modalVisible}
+        onRequestClose={() => {
+          this.setState({ modalVisible: false });
+        }}
+      >
         <View style={styles.modal}>
           <Text style={styles.SignUpTitleText}>Sign Up</Text>
-          <TextInput
-            style={styles.SignUpInput}
-            value={this.state.name}
-            placeholder="name"
-            maxLength={8}
-            onChangeText={(name) => {
-              this.setState({
-                name: name,
-              });
-            }}
-          />
+          <View style={{ marginTop: 30 }}>
+            <Image
+              source={require("../../assets/BrainIcon.png")}
+              style={{ width: 200, height: 200, borderRadius: 10 }}
+            />
+            <Text
+              style={{
+                fontSize: 25,
+                fontWeight: "300",
+                color: "#ff3d00",
+                marginTop: 15,
+                textAlign: "center",
+                textTransform: "capitalize",
+              }}
+            >
+              The Brain
+            </Text>
+          </View>
 
-          <TextInput
-            style={styles.SignUpInput}
-            placeholder="Email"
-            keyboardType="email-address"
-            onChangeText={(email) => {
-              this.setState({
-                email: email,
-              });
-            }}
-          />
-          <TextInput
-            style={styles.SignUpInput}
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={(password) => {
-              this.setState({
-                password: password,
-              });
-            }}
-          />
-          <TextInput
-            style={styles.SignUpInput}
-            placeholder="Confirm Password"
-            secureTextEntry={true}
-            onChangeText={(confirmPassword) => {
-              this.setState({
-                confirmPassword: confirmPassword,
-              });
-            }}
-          />
+          <View>
+            <TextInput
+              style={styles.SignUpInput}
+              value={this.state.name}
+              placeholder="name"
+              maxLength={8}
+              onChangeText={(name) => {
+                this.setState({
+                  name: name,
+                });
+              }}
+            />
+
+            <TextInput
+              style={styles.SignUpInput}
+              placeholder="Email"
+              keyboardType="email-address"
+              onChangeText={(email) => {
+                this.setState({
+                  email: email,
+                });
+              }}
+            />
+            <TextInput
+              style={styles.SignUpInput}
+              placeholder="Password"
+              secureTextEntry={true}
+              onChangeText={(password) => {
+                this.setState({
+                  password: password,
+                });
+              }}
+            />
+            <TextInput
+              style={styles.SignUpInput}
+              placeholder="Confirm Password"
+              secureTextEntry={true}
+              onChangeText={(confirmPassword) => {
+                this.setState({
+                  confirmPassword: confirmPassword,
+                });
+              }}
+            />
+          </View>
 
           <TouchableOpacity
             style={styles.SignUpButton}
@@ -141,15 +168,15 @@ export default class LoginScreen extends Component {
       <View style={styles.container}>
         <View style={{ marginTop: 30 }}>
           <Image
-            source={require("../../assets/doctors.png")}
-            style={{ width: 300, height: 200, borderRadius: 10 }}
+            source={require("../../assets/BrainIcon.png")}
+            style={{ width: 200, height: 200, borderRadius: 10 }}
           />
           <Text
             style={{
               fontSize: 25,
               fontWeight: "300",
               color: "#ff3d00",
-              marginTop: 15,
+              marginTop: 10,
               textAlign: "center",
               textTransform: "capitalize",
             }}
@@ -158,10 +185,7 @@ export default class LoginScreen extends Component {
           </Text>
         </View>
 
-        <KeyboardAvoidingView
-          style={{ backgroundColor: "white" }}
-          behavior="padding"
-        >
+        <View>
           <TextInput
             value={this.state.email}
             onChangeText={(email) => {
@@ -193,27 +217,28 @@ export default class LoginScreen extends Component {
             placeholderTextColor="#ff8a65"
             placeholder="confirm Password"
           />
-        </KeyboardAvoidingView>
+        </View>
 
         {/* buttons */}
+        <View style={{ marginBottom: 20 }}>
+          <TouchableOpacity
+            style={styles.LoginButton}
+            onPress={() => {
+              this.signIn(this.state.email, this.state.password);
+            }}
+          >
+            <Text style={styles.LoginButtonText}>Login</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.LoginButton}
-          onPress={() => {
-            this.signIn(this.state.email, this.state.password);
-          }}
-        >
-          <Text style={styles.LoginButtonText}>Login</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.LoginButton}
-          onPress={() => {
-            this.setState({ modalVisible: true });
-          }}
-        >
-          <Text style={styles.LoginButtonText}>Don't have an account ?</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.LoginButton}
+            onPress={() => {
+              this.setState({ modalVisible: true });
+            }}
+          >
+            <Text style={styles.LoginButtonText}>Don't have an account ?</Text>
+          </TouchableOpacity>
+        </View>
 
         {this.DisplayModal()}
       </View>
@@ -272,7 +297,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 30,
     color: "#ff5722",
-    margin: 15,
+    marginTop: 50,
   },
 
   cancelButton: {
@@ -287,8 +312,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 10.32,
     elevation: 16,
-    marginBottom: 10,
-    marginTop: 20,
+    marginBottom: "15%",
   },
 
   cancelButtonText: {
@@ -329,8 +353,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 10.32,
     elevation: 16,
-
-    marginTop: 10,
+    marginTop: 20,
   },
 
   LoginButtonText: {

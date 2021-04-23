@@ -6,9 +6,3 @@ export default class App extends Component {
     return <Navigator />;
   }
 }
-
-/**
- * used Work
- * Brain.json file is used in The Home Screen (The Top Image)
- 
- */

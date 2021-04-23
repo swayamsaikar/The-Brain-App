@@ -1,31 +1,36 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 import { Image } from "react-native";
+import { ImageBackground } from "react-native";
 import { View, Text } from "react-native";
 import { Header } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Swiper from "react-native-swiper";
+import LogoutIcon from "react-native-vector-icons/MaterialIcons";
+import AboutIcon from "react-native-vector-icons/Entypo";
+import firebase from "firebase";
 
 // Select The Categories data
+
 const categoriesData = [
   {
     displayText: "Want To Research About Human Brain ?",
     img: require("../../assets/research.png"),
-    backgroundColor: "#CB9178",
+    backgroundColor: "#ffbc7c",
     navigateTo: "Research",
   },
 
   {
     displayText: "Want To Test Your Skills ?",
     img: require("../../assets/quiz(Category-Icon).png"),
-    backgroundColor: "#71A87D",
+    backgroundColor: "#badc58",
     navigateTo: "Quiz",
   },
 
   {
     displayText: "Want a healthy Brain ?",
     img: require("../../assets/healthyBrain.png"),
-    backgroundColor: "#9F79EE",
+    backgroundColor: "#ffeaa7",
     navigateTo: "Healthy Brain",
   },
 ];
@@ -34,7 +39,7 @@ const categoriesData = [
 
 const ourServicesData = [
   {
-    img: require("../../assets/quiz.png"),
+    img: require("../../assets/doctors.png"),
   },
   {
     img: require("../../assets/brain.jpg"),
@@ -43,21 +48,45 @@ const ourServicesData = [
     img: require("../../assets/book.jpg"),
   },
   {
-    img: require("../../assets/doctors.png"),
+    img: require("../../assets/quiz.png"),
   },
 ];
 
 export default class MainScreen extends Component {
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: "#252C4A" }}>
+      <ImageBackground
+        source={require("../../assets/MainScreenBackground.png")}
+        style={{ flex: 1 }}
+      >
         <Header
-          backgroundColor="#4B0082"
+          backgroundColor="#a29bfe"
           style={{ padding: 10 }}
           centerComponent={{
             text: "The Brain",
-            style: { fontSize: 24, color: "white", fontWeight: "bold" },
+            style: { fontSize: 24, color: "#fff", fontWeight: "bold" },
           }}
+          leftComponent={
+            <AboutIcon
+              name="info-with-circle"
+              size={35}
+              color="#000"
+              onPress={() => {
+                this.props.navigation.navigate("About");
+              }}
+            />
+          }
+          rightComponent={
+            <LogoutIcon
+              name="logout"
+              size={35}
+              color="#000"
+              onPress={() => {
+                firebase.auth().signOut();
+                this.props.navigation.replace("Sign In");
+              }}
+            />
+          }
         />
 
         {/* This is The swiper View  ---- */}
@@ -77,8 +106,8 @@ export default class MainScreen extends Component {
                 <Text
                   style={{
                     fontSize: 22,
-                    fontWeight: "900",
-                    color: "#F4F4F6",
+                    fontWeight: "bold",
+                    color: "#000",
                     textAlign: "center",
                     marginTop: 10,
                   }}
@@ -96,7 +125,7 @@ export default class MainScreen extends Component {
             borderRadius: 20,
             margin: 8.5,
             borderColor: "black",
-            backgroundColor: "#5d6589",
+            backgroundColor: "#dfe6e9",
             padding: 10,
             width: "90%",
             alignSelf: "center",
@@ -106,7 +135,7 @@ export default class MainScreen extends Component {
             style={{
               fontSize: 16.5,
               textAlign: "center",
-              color: "#f4f4f4",
+              color: "#000",
               fontWeight: "bold",
             }}
           >
@@ -159,7 +188,7 @@ export default class MainScreen extends Component {
             ))}
           </Swiper>
         </View>
-      </View>
+      </ImageBackground>
     );
   }
 }

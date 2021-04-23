@@ -17,6 +17,7 @@ import CerebrumScreen from "./ResearchScreenChildrens/Cerebrum_Screen";
 import FoodItemsScreen from "./Screens/FoodItemsScreen";
 
 import LoginScreen from "./Screens/LoginScreen";
+import AboutScreen from "./Screens/AboutScreen";
 
 const Stack = createStackNavigator();
 
@@ -25,10 +26,10 @@ export default class Navigator extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Sign In"
           screenOptions={{
             headerStyle: {
-              backgroundColor: "#e34b4b",
+              backgroundColor: "#a29bfe",
             },
             headerTitleAlign: "center",
             headerTintColor: "#fff",
@@ -78,6 +79,7 @@ export default class Navigator extends Component {
           />
           <Stack.Screen name="Cerebrum" component={CerebrumScreen} />
           <Stack.Screen name="Hypothalmus" component={HypothalmusScreen} />
+          <Stack.Screen name="About" component={AboutScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );

@@ -2,7 +2,7 @@ const data = [
   {
     key: 1,
     name: "Introduction",
-    color: "#e34b4b",
+    color: "#74b9ff",
     image: require("../ResearchScreenImages/brain.png"),
     width: 75,
     height: 75,
@@ -12,7 +12,7 @@ const data = [
   {
     key: 2,
     name: "Cell",
-    color: "#6AA84D",
+    color: "#81ecec",
     image: require("../ResearchScreenImages/blood.png"),
     width: 75,
     height: 75,
@@ -22,7 +22,7 @@ const data = [
   {
     key: 3,
     name: "Neuron",
-    color: "#4ABCD8",
+    color: "#fab1a0",
     image: require("../ResearchScreenImages/neuron.png"),
     width: 75,
     height: 75,
@@ -32,7 +32,7 @@ const data = [
   {
     key: 4,
     name: "Cerebral Cortex",
-    color: "#FB74BC",
+    color: "#ee5253",
     image: require("../ResearchScreenImages/brain.png"),
     width: 75,
     height: 75,
@@ -42,7 +42,7 @@ const data = [
   {
     key: 5,
     name: "Hypothalmus",
-    color: "#FB74BC",
+    color: "#ff9ff3",
     image: require("../ResearchScreenImages/hypothalmus.png"),
     width: 80,
     height: 80,
@@ -52,7 +52,7 @@ const data = [
   {
     key: 6,
     name: "Cerebrum",
-    color: "#FB74BC",
+    color: "#10ac84",
     image: require("../ResearchScreenImages/cerebrum.png"),
     width: 80,
     height: 80,
