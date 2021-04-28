@@ -36,6 +36,7 @@ export default class LoginScreen extends Component {
           db.collection("Users").add({
             UserName: this.state.name,
             Email: this.state.email,
+            ButtonVisible: true,
           });
           return Alert.alert("User SignUp SuccessFull", "", [
             {

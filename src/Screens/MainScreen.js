@@ -6,9 +6,20 @@ import { View, Text } from "react-native";
 import { Header } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Swiper from "react-native-swiper";
+
+import firebase from "firebase";
+import db from "../config/firebase_config";
+import * as Sharing from "expo-sharing";
+import { Fab, Button } from "native-base";
+import { Linking } from "react-native";
+
+// Icons
+
 import LogoutIcon from "react-native-vector-icons/MaterialIcons";
 import AboutIcon from "react-native-vector-icons/Entypo";
-import firebase from "firebase";
+import ShareIcon from "react-native-vector-icons/Entypo";
+import MailIcon from "react-native-vector-icons/Entypo";
+import ChatIcon from "react-native-vector-icons/Entypo";
 
 // Select The Categories data
 
@@ -53,6 +64,42 @@ const ourServicesData = [
 ];
 
 export default class MainScreen extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentUserEmail: firebase.auth().currentUser.email,
+      ButtonVisible: "",
+      currentUserDocId: "",
+      activeFAB: false,
+    };
+  }
+
+  getCurrentUsersData = () => {
+    db.collection("Users")
+      .where("Email", "==", this.state.currentUserEmail)
+      .get()
+      .then((collection) => {
+        collection.docs.map((doc) => {
+          this.setState({
+            ButtonVisible: doc.data().ButtonVisible,
+            currentUserDocId: doc.id,
+          });
+        });
+      });
+  };
+
+  updateDocId = () => {
+    db.collection("Users").doc(this.state.currentUserDocId).update({
+      ButtonVisible: false,
+    });
+
+    this.getCurrentUsersData();
+  };
+
+  componentDidMount() {
+    this.getCurrentUsersData();
+  }
+
   render() {
     return (
       <ImageBackground
@@ -188,6 +235,85 @@ export default class MainScreen extends Component {
             ))}
           </Swiper>
         </View>
+
+        {this.state.ButtonVisible ? (
+          <View style={{ flex: 1 }}>
+            <Fab
+              active={this.state.activeFAB}
+              position="bottomRight"
+              onPress={() => {
+                this.setState({ activeFAB: !this.state.activeFAB });
+              }}
+              containerStyle={{ height: 300 }}
+              style={{
+                backgroundColor: "#5067FF",
+                width: 60,
+                height: 60,
+                borderRadius: 60 / 2,
+              }}
+            >
+              <ChatIcon name="dots-three-vertical" />
+              <Button
+                onPress={() => {}}
+                style={{
+                  backgroundColor: "#34A34F",
+                  width: 50,
+                  height: 50,
+                  borderRadius: 50 / 2,
+                  marginBottom: 12,
+                }}
+              >
+                <ShareIcon name="share" color="#fff" size={30} />
+              </Button>
+              <Button
+                onPress={() => {
+                  Linking.openURL("mailto:swayam@gmail.com");
+                  this.updateDocId();
+                }}
+                style={{
+                  backgroundColor: "#5067FF",
+                  width: 50,
+                  height: 50,
+                  borderRadius: 50 / 2,
+                  marginBottom: 15,
+                }}
+              >
+                <MailIcon name="mail" color="#fff" size={30} />
+              </Button>
+            </Fab>
+          </View>
+        ) : (
+          <View style={{ flex: 1 }}>
+            <Fab
+              active={this.state.activeFAB}
+              position="bottomRight"
+              onPress={() => {
+                this.setState({ activeFAB: !this.state.activeFAB });
+              }}
+              containerStyle={{ height: 300 }}
+              style={{
+                backgroundColor: "#5067FF",
+                width: 60,
+                height: 60,
+                borderRadius: 60 / 2,
+              }}
+            >
+              <ChatIcon name="dots-three-vertical" />
+              <Button
+                onPress={() => {}}
+                style={{
+                  backgroundColor: "#34A34F",
+                  width: 50,
+                  height: 50,
+                  borderRadius: 50 / 2,
+                  marginBottom: 12,
+                }}
+              >
+                <ShareIcon name="share" color="#fff" size={30} />
+              </Button>
+            </Fab>
+          </View>
+        )}
       </ImageBackground>
     );
   }
@@ -212,5 +338,9 @@ const styles = StyleSheet.create({
   TouchableTextStyle: {
     fontSize: 21,
     textAlign: "center",
+  },
+  fab: {
+    padding: 20,
+    backgroundColor: "#fff",
   },
 });
