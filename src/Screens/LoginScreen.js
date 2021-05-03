@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import firebase from "firebase";
 import db from "../config/firebase_config";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StatusBar } from "react-native";
 
 export default class LoginScreen extends Component {
   constructor() {
@@ -59,6 +61,7 @@ export default class LoginScreen extends Component {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         this.props.navigation.replace("Home");
+        AsyncStorage.setItem("isLoggedIn", "1");
       })
       .catch((err) => {
         alert(err.message);
@@ -225,7 +228,11 @@ export default class LoginScreen extends Component {
           <TouchableOpacity
             style={styles.LoginButton}
             onPress={() => {
-              this.signIn(this.state.email, this.state.password);
+              !this.state.email ||
+              !this.state.password ||
+              !this.state.confirmPassword
+                ? alert("Kindly Check You Input Fields")
+                : this.signIn(this.state.email, this.state.password);
             }}
           >
             <Text style={styles.LoginButtonText}>Login</Text>

@@ -18,6 +18,7 @@ import FoodItemsScreen from "./Screens/FoodItemsScreen";
 
 import LoginScreen from "./Screens/LoginScreen";
 import AboutScreen from "./Screens/AboutScreen";
+import LoadingScreen from "./Screens/LoadingScreen";
 
 const Stack = createStackNavigator();
 
@@ -26,7 +27,7 @@ export default class Navigator extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Sign In"
+          initialRouteName="Loading"
           screenOptions={{
             headerStyle: {
               backgroundColor: "#a29bfe",
@@ -35,6 +36,11 @@ export default class Navigator extends Component {
             headerTintColor: "#fff",
           }}
         >
+          <Stack.Screen
+            name="Loading"
+            component={LoadingScreen}
+            options={{ headerShown: false }}
+          />
           {/* Login and SignUp Screens  */}
 
           <Stack.Screen

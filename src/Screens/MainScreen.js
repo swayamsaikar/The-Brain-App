@@ -67,16 +67,16 @@ export default class MainScreen extends Component {
   constructor() {
     super();
     this.state = {
-      currentUserEmail: firebase.auth().currentUser.email,
       ButtonVisible: "",
       currentUserDocId: "",
       activeFAB: false,
     };
   }
 
-  getCurrentUsersData = () => {
+  getCurrentUsersData = async () => {
+    var CurrentUserEmail = await firebase.auth().currentUser.email;
     db.collection("Users")
-      .where("Email", "==", this.state.currentUserEmail)
+      .where("Email", "==", CurrentUserEmail)
       .get()
       .then((collection) => {
         collection.docs.map((doc) => {
@@ -254,7 +254,9 @@ export default class MainScreen extends Component {
             >
               <ChatIcon name="dots-three-vertical" />
               <Button
-                onPress={() => {}}
+                onPress={() => {
+                  // Sharing.shareAsync(appURL)
+                }}
                 style={{
                   backgroundColor: "#34A34F",
                   width: 50,
