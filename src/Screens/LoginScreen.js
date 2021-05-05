@@ -59,9 +59,13 @@ export default class LoginScreen extends Component {
     await firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(async () => {
         this.props.navigation.replace("Home");
-        AsyncStorage.setItem("isLoggedIn", "1");
+        await AsyncStorage.setItem("isLoggedIn", "1");
+        await AsyncStorage.setItem(
+          "currentUserEmail",
+          firebase.auth().currentUser.email
+        );
       })
       .catch((err) => {
         alert(err.message);

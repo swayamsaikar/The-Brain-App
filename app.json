@@ -4,11 +4,10 @@
     "slug": "THE-BRAIN",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/BrainAppIcon.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/SplashBrain.png",
+      "resizeMode": "cover"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,9 +20,11 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/BrainAppIcon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.swayamsaikar.TheBrain",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"

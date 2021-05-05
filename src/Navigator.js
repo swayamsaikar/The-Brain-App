@@ -17,7 +17,6 @@ import CerebrumScreen from "./ResearchScreenChildrens/Cerebrum_Screen";
 import FoodItemsScreen from "./Screens/FoodItemsScreen";
 
 import LoginScreen from "./Screens/LoginScreen";
-import AboutScreen from "./Screens/AboutScreen";
 import LoadingScreen from "./Screens/LoadingScreen";
 
 const Stack = createStackNavigator();
@@ -85,7 +84,6 @@ export default class Navigator extends Component {
           />
           <Stack.Screen name="Cerebrum" component={CerebrumScreen} />
           <Stack.Screen name="Hypothalmus" component={HypothalmusScreen} />
-          <Stack.Screen name="About" component={AboutScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );

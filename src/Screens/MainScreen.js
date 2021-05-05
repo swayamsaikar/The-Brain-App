@@ -16,10 +16,10 @@ import { Linking } from "react-native";
 // Icons
 
 import LogoutIcon from "react-native-vector-icons/MaterialIcons";
-import AboutIcon from "react-native-vector-icons/Entypo";
 import ShareIcon from "react-native-vector-icons/Entypo";
 import MailIcon from "react-native-vector-icons/Entypo";
 import ChatIcon from "react-native-vector-icons/Entypo";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Select The Categories data
 
@@ -74,11 +74,10 @@ export default class MainScreen extends Component {
   }
 
   getCurrentUsersData = async () => {
-    var CurrentUserEmail = await firebase.auth().currentUser.email;
+    const CurrentUserEmail = await AsyncStorage.getItem("currentUserEmail");
     db.collection("Users")
       .where("Email", "==", CurrentUserEmail)
-      .get()
-      .then((collection) => {
+      .onSnapshot((collection) => {
         collection.docs.map((doc) => {
           this.setState({
             ButtonVisible: doc.data().ButtonVisible,
@@ -106,35 +105,59 @@ export default class MainScreen extends Component {
         source={require("../../assets/MainScreenBackground.png")}
         style={{ flex: 1 }}
       >
-        <Header
-          backgroundColor="#a29bfe"
-          style={{ padding: 10 }}
-          centerComponent={{
-            text: "The Brain",
-            style: { fontSize: 24, color: "#fff", fontWeight: "bold" },
-          }}
-          leftComponent={
-            <AboutIcon
-              name="info-with-circle"
-              size={35}
-              color="#000"
-              onPress={() => {
-                this.props.navigation.navigate("About");
-              }}
-            />
-          }
-          rightComponent={
-            <LogoutIcon
-              name="logout"
-              size={35}
-              color="#000"
-              onPress={() => {
-                firebase.auth().signOut();
-                this.props.navigation.replace("Sign In");
-              }}
-            />
-          }
-        />
+        {this.state.ButtonVisible !== true ? (
+          <Header
+            backgroundColor="#a29bfe"
+            style={{ padding: 10 }}
+            centerComponent={{
+              text: "The Brain",
+              style: { fontSize: 24, color: "#fff", fontWeight: "bold" },
+            }}
+            rightComponent={
+              <LogoutIcon
+                name="logout"
+                size={35}
+                color="#000"
+                onPress={() => {
+                  AsyncStorage.removeItem("isLoggedIn");
+                  firebase.auth().signOut();
+                  this.props.navigation.replace("Sign In");
+                }}
+              />
+            }
+          />
+        ) : (
+          <Header
+            backgroundColor="#a29bfe"
+            style={{ padding: 10 }}
+            centerComponent={{
+              text: "The Brain",
+              style: { fontSize: 24, color: "#fff", fontWeight: "bold" },
+            }}
+            rightComponent={
+              <LogoutIcon
+                name="logout"
+                size={35}
+                color="#000"
+                onPress={() => {
+                  firebase.auth().signOut();
+                  this.props.navigation.replace("Sign In");
+                }}
+              />
+            }
+            leftComponent={
+              <TouchableOpacity
+                onPress={() => {
+                  Linking.openURL("mailto:swayam@gmail.com");
+                  this.updateDocId();
+                }}
+                style={{ borderRadius: 50 / 2 }}
+              >
+                <MailIcon name="mail" color="#000" size={30} />
+              </TouchableOpacity>
+            }
+          />
+        )}
 
         {/* This is The swiper View  ---- */}
 
@@ -236,86 +259,23 @@ export default class MainScreen extends Component {
           </Swiper>
         </View>
 
-        {this.state.ButtonVisible ? (
-          <View style={{ flex: 1 }}>
-            <Fab
-              active={this.state.activeFAB}
-              position="bottomRight"
-              onPress={() => {
-                this.setState({ activeFAB: !this.state.activeFAB });
-              }}
-              containerStyle={{ height: 300 }}
-              style={{
-                backgroundColor: "#5067FF",
-                width: 60,
-                height: 60,
-                borderRadius: 60 / 2,
-              }}
-            >
-              <ChatIcon name="dots-three-vertical" />
-              <Button
-                onPress={() => {
-                  // Sharing.shareAsync(appURL)
-                }}
-                style={{
-                  backgroundColor: "#34A34F",
-                  width: 50,
-                  height: 50,
-                  borderRadius: 50 / 2,
-                  marginBottom: 12,
-                }}
-              >
-                <ShareIcon name="share" color="#fff" size={30} />
-              </Button>
-              <Button
-                onPress={() => {
-                  Linking.openURL("mailto:swayam@gmail.com");
-                  this.updateDocId();
-                }}
-                style={{
-                  backgroundColor: "#5067FF",
-                  width: 50,
-                  height: 50,
-                  borderRadius: 50 / 2,
-                  marginBottom: 15,
-                }}
-              >
-                <MailIcon name="mail" color="#fff" size={30} />
-              </Button>
-            </Fab>
-          </View>
-        ) : (
-          <View style={{ flex: 1 }}>
-            <Fab
-              active={this.state.activeFAB}
-              position="bottomRight"
-              onPress={() => {
-                this.setState({ activeFAB: !this.state.activeFAB });
-              }}
-              containerStyle={{ height: 300 }}
-              style={{
-                backgroundColor: "#5067FF",
-                width: 60,
-                height: 60,
-                borderRadius: 60 / 2,
-              }}
-            >
-              <ChatIcon name="dots-three-vertical" />
-              <Button
-                onPress={() => {}}
-                style={{
-                  backgroundColor: "#34A34F",
-                  width: 50,
-                  height: 50,
-                  borderRadius: 50 / 2,
-                  marginBottom: 12,
-                }}
-              >
-                <ShareIcon name="share" color="#fff" size={30} />
-              </Button>
-            </Fab>
-          </View>
-        )}
+        <View style={{ flex: 1 }}>
+          <Fab
+            position="bottomRight"
+            onPress={() => {
+              alert("Hello");
+            }}
+            containerStyle={{ height: 300 }}
+            style={{
+              backgroundColor: "#5067FF",
+              width: 60,
+              height: 60,
+              borderRadius: 60 / 2,
+            }}
+          >
+            <ChatIcon name="share" />
+          </Fab>
+        </View>
       </ImageBackground>
     );
   }
