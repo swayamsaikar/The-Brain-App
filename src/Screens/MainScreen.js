@@ -69,7 +69,6 @@ export default class MainScreen extends Component {
     this.state = {
       ButtonVisible: "",
       currentUserDocId: "",
-      activeFAB: false,
     };
   }
 
@@ -257,24 +256,6 @@ export default class MainScreen extends Component {
               </TouchableOpacity>
             ))}
           </Swiper>
-        </View>
-
-        <View style={{ flex: 1 }}>
-          <Fab
-            position="bottomRight"
-            onPress={() => {
-              alert("Hello");
-            }}
-            containerStyle={{ height: 300 }}
-            style={{
-              backgroundColor: "#5067FF",
-              width: 60,
-              height: 60,
-              borderRadius: 60 / 2,
-            }}
-          >
-            <ChatIcon name="share" />
-          </Fab>
         </View>
       </ImageBackground>
     );
