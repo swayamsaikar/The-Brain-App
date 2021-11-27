@@ -70,7 +70,7 @@ export default class FoodScreen extends Component {
                     </View>
 
                     <View style={{ marginTop: 20 }}>
-                      <Text style={{ fontSize: 13 }}>{item.Para}</Text>
+                      <Text style={{ fontSize: 14 }}>{item.Para}</Text>
                     </View>
                   </Body>
                 </CardItem>

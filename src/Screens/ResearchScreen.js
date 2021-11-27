@@ -34,6 +34,7 @@ export default class ResearchScreen extends Component {
           numColumns={2}
           renderItem={({ item }) => (
             <TouchableOpacity
+              key={item.key}
               style={{ padding: 20, elevation: 10 }}
               onPress={() => {
                 this.props.navigation.navigate(item.navigationPath);

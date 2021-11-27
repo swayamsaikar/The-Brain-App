@@ -41,7 +41,7 @@ const data = [
 
   {
     key: 5,
-    name: "Hypothalmus",
+    name: "Hypothalamus",
     color: "#ff9ff3",
     image: require("../ResearchScreenImages/hypothalmus.png"),
     width: 80,

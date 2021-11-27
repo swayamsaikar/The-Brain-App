@@ -2,6 +2,7 @@ import { Image } from "react-native";
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import YoutubeVideoPlayer from "../components/YoutubeVideoPlayer";
 
 export default class Cell_Screen extends Component {
   constructor(props) {
@@ -128,6 +129,7 @@ export default class Cell_Screen extends Component {
               <Text style={{ fontSize: 24, fontWeight: "bold" }}>
                 Astrocytes Cell :
               </Text>
+
               <Text style={{ fontSize: 16, marginTop: 5 }}>
                 Astrocytes are star-shaped cells that surround neurons and
                 support neuron function. Astrocytes mainly help regulate the
@@ -137,6 +139,11 @@ export default class Cell_Screen extends Component {
                 astrocytes can also help microglia when the brain is in trouble.
               </Text>
             </View>
+            <YoutubeVideoPlayer
+              imgPath={require("../../youtubeThumbnails/CellsScreenThumbnail.png")}
+              title="Types of Cells Present in the Brain"
+              url="https://www.youtube.com/watch?v=AwES6R1_9PM"
+            />
           </View>
         </View>
       </ScrollView>

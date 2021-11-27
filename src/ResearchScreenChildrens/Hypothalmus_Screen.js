@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Image } from "react-native";
 import { View, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import YoutubeVideoPlayer from "../components/YoutubeVideoPlayer";
 
 export default class Hypothalmus_Screen extends Component {
   constructor(props) {
@@ -18,13 +19,13 @@ export default class Hypothalmus_Screen extends Component {
             source={require("../../assets/HypothalmusImageHypothalmusScreen.jpg")}
             resizeMode="contain"
           />
-          <Text style={{ fontSize: 25 }}>Hypothalmus</Text>
+          <Text style={{ fontSize: 25 }}>Hypothalamus</Text>
         </View>
 
         <View style={styles.headingAndParaStyle}>
           <View style={{ width: "90%" }}>
             <Text style={{ fontWeight: "bold", fontSize: 24 }}>
-              What is Hypothalmus ?
+              What is Hypothalamus ?
             </Text>
           </View>
 
@@ -48,6 +49,11 @@ export default class Hypothalmus_Screen extends Component {
             </Text>
           </View>
         </View>
+        <YoutubeVideoPlayer
+          imgPath={require("../../youtubeThumbnails/HypothalmusScreenThumbnail.png")}
+          title="Hypothalamus: Nuclei and Connections"
+          url="https://www.youtube.com/watch?v=2UF4H6o_L48"
+        />
       </ScrollView>
     );
   }

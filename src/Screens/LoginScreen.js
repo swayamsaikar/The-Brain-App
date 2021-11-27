@@ -214,17 +214,6 @@ export default class LoginScreen extends Component {
             placeholderTextColor="#ff8a65"
             placeholder="password"
           />
-
-          <TextInput
-            value={this.state.confirmPassword}
-            onChangeText={(confirmPassword) => {
-              this.setState({ confirmPassword: confirmPassword });
-            }}
-            style={[styles.LoginInput]}
-            secureTextEntry={true}
-            placeholderTextColor="#ff8a65"
-            placeholder="confirm Password"
-          />
         </View>
 
         {/* buttons */}
@@ -232,9 +221,7 @@ export default class LoginScreen extends Component {
           <TouchableOpacity
             style={styles.LoginButton}
             onPress={() => {
-              !this.state.email ||
-              !this.state.password ||
-              !this.state.confirmPassword
+              !this.state.email || !this.state.password
                 ? alert("Kindly Check You Input Fields")
                 : this.signIn(this.state.email, this.state.password);
             }}

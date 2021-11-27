@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Image } from "react-native";
 import { View, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import YoutubeVideoPlayer from "../components/YoutubeVideoPlayer";
 
 export default class Neuron_Screen extends Component {
   constructor(props) {
@@ -9,13 +10,11 @@ export default class Neuron_Screen extends Component {
     this.state = {
       Arr: [
         {
-          text:
-            "Sensory neurons carry information from the sense organs (such as the eyes and ears) to the brain",
+          text: "Sensory neurons carry information from the sense organs (such as the eyes and ears) to the brain",
           id: 1,
         },
         {
-          text:
-            "Motor neurons control voluntary muscle activity such as speaking and carry messages from nerve cells in the brain to the muscles.",
+          text: "Motor neurons control voluntary muscle activity such as speaking and carry messages from nerve cells in the brain to the muscles.",
           id: 2,
         },
         { text: "All the other neurons are called interneurons.", id: 3 },
@@ -95,6 +94,11 @@ export default class Neuron_Screen extends Component {
                 known as Schwann cells.
               </Text>
             </View>
+            <YoutubeVideoPlayer
+              imgPath={require("../../youtubeThumbnails/NeuronScreenThumbnail.png")}
+              title="Structure and function of Neuron - Animation"
+              url="https://www.youtube.com/watch?v=O2kuU2mZzeU"
+            />
           </View>
         </View>
       </ScrollView>

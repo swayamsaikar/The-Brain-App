@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, ImageBackground, Button } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import questionsData from "../../Extra/QuestionsData";
 
@@ -36,7 +36,7 @@ export default class QuizScreen extends Component {
         <Button
           title="Play Again!"
           onPress={() => {
-            this.setState({ showScore: false, score: 1, questionNumber: 0 });
+            this.setState({ showScore: false, score: 0, questionNumber: 0 });
           }}
         />
       </View>

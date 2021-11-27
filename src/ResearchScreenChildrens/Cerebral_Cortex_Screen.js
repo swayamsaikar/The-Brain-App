@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Image } from "react-native";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
+import YoutubeVideoPlayer from "../components/YoutubeVideoPlayer";
 
 export default class Cerebral_Cortex_Screen extends Component {
   constructor(props) {
@@ -8,38 +9,31 @@ export default class Cerebral_Cortex_Screen extends Component {
     this.state = {
       arr: [
         {
-          text:
-            "The top layer of the human brain is full of grooves, which significantly enlarge its surface. The brain consists of two symmetrical cerebral hemispheres (also called hemisphere cerebri) that are interconnected by the callus.",
+          text: "The top layer of the human brain is full of grooves, which significantly enlarge its surface. The brain consists of two symmetrical cerebral hemispheres (also called hemisphere cerebri) that are interconnected by the callus.",
           id: "‣ ",
         },
         {
-          text:
-            "The surface is wrinkled, and we can distinguish the brain curves that are separated by furrows. Although both hemispheres are physically identical, they have completely different roles.",
+          text: "The surface is wrinkled, and we can distinguish the brain curves that are separated by furrows. Although both hemispheres are physically identical, they have completely different roles.",
           id: "‣ ",
         },
         {
-          text:
-            "The first difference is that they control the opposite sides of the body: the right hemisphere controls the left side of the body, while the left hemisphere controls the right side of the body.          ",
+          text: "The first difference is that they control the opposite sides of the body: the right hemisphere controls the left side of the body, while the left hemisphere controls the right side of the body.          ",
           id: "‣ ",
         },
         {
-          text:
-            "The left hemisphere is related to functions of speech, writing, composing sentences, and problem-solving. Also, this half of the left brain is responsible for analytical thinking, while the right hemisphere is responsible for synthesis thinking, by looking at the whole.",
+          text: "The left hemisphere is related to functions of speech, writing, composing sentences, and problem-solving. Also, this half of the left brain is responsible for analytical thinking, while the right hemisphere is responsible for synthesis thinking, by looking at the whole.",
           id: "‣ ",
         },
         {
-          text:
-            "At the center of the cerebral hemispheres, the basal ganglia are found. There is a thin but extensive cerebral cortex on the surface of our brain. The basal ganglia play an important role in initiating and controlling movement.",
+          text: "At the center of the cerebral hemispheres, the basal ganglia are found. There is a thin but extensive cerebral cortex on the surface of our brain. The basal ganglia play an important role in initiating and controlling movement.",
           id: "‣ ",
         },
         {
-          text:
-            "Since space in the skull is very limited, the cerebral cortex is wrinkled, as we have already said, which causes a much larger area of the cerebral cortex to fit into the same volume.",
+          text: "Since space in the skull is very limited, the cerebral cortex is wrinkled, as we have already said, which causes a much larger area of the cerebral cortex to fit into the same volume.",
           id: "‣ ",
         },
         {
-          text:
-            "The cerebral cortex is the most developed part of the human brain - four times the size of a gorilla. It is divided into a large number of fields, which differ in the number of layers of neurons and connection with other areas of the brain.",
+          text: "The cerebral cortex is the most developed part of the human brain - four times the size of a gorilla. It is divided into a large number of fields, which differ in the number of layers of neurons and connection with other areas of the brain.",
           id: "‣ ",
         },
       ],
@@ -88,7 +82,7 @@ export default class Cerebral_Cortex_Screen extends Component {
           </View>
 
           {this.state.arr.map((element, index) => (
-            <View style={styles.paraStyle}>
+            <View style={styles.paraStyle} key={index}>
               <View
                 style={{
                   flexDirection: "row",
@@ -102,6 +96,13 @@ export default class Cerebral_Cortex_Screen extends Component {
               </View>
             </View>
           ))}
+        </View>
+        <View style={{ marginRight: 5 }}>
+          <YoutubeVideoPlayer
+            imgPath={require("../../youtubeThumbnails/CerebralCortexScreenThumbnail.png")}
+            title="The Nervous System: Cerebral Cortex"
+            url="https://www.youtube.com/watch?v=dNngOlsLuGI"
+          />
         </View>
       </ScrollView>
     );
