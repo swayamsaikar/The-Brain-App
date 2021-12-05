@@ -3,6 +3,7 @@ import { Image } from "react-native";
 import { View, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import YoutubeVideoPlayer from "../components/YoutubeVideoPlayer";
+import TTS from "../components/TTS";
 
 export default class Neuron_Screen extends Component {
   constructor(props) {
@@ -35,10 +36,29 @@ export default class Neuron_Screen extends Component {
         </View>
 
         <View style={styles.headingAndParaStyle}>
-          <View style={{ width: "90%" }}>
+          <View
+            style={{
+              width: "90%",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             <Text style={{ fontWeight: "bold", fontSize: 24 }}>
               What are Neurons ?
             </Text>
+            <TTS
+              text="Neurons are cells within the nervous system that transmit
+              information to other nerve cells, muscle, or gland cells. Most
+              neurons have a cell body, an axon, and dendrites. The cell body
+              contains the nucleus and cytoplasm. The axon extends from the cell
+              body and often gives rise to many smaller branches before ending
+              at nerve terminals. Dendrites extend from the neuron cell body and
+              receive messages from other neurons. Synapses are the contact
+              points where one neuron communicates with another. The dendrites
+              are covered with synapses formed by the ends of axons from other
+              neurons."
+            />
           </View>
 
           <View style={styles.paraStyle}>

@@ -18,7 +18,6 @@ import FoodItemsScreen from "./Screens/FoodItemsScreen";
 
 import LoginScreen from "./Screens/LoginScreen";
 import LoadingScreen from "./Screens/LoadingScreen";
-import TTS from "./components/TTS";
 
 const Stack = createStackNavigator();
 
@@ -28,7 +27,7 @@ export default class Navigator extends Component {
       <NavigationContainer>
         <Stack.Navigator
           // Loading
-          initialRouteName="loading"
+          initialRouteName="Loading"
           screenOptions={{
             headerStyle: {
               backgroundColor: "#a29bfe",
@@ -37,9 +36,6 @@ export default class Navigator extends Component {
             headerTintColor: "#fff",
           }}
         >
-          {/* TTS COMPONENT NAVIGATION */}
-          {/* <Stack.Screen name="test" component={TTS} /> */}
-
           <Stack.Screen
             name="Loading"
             component={LoadingScreen}

@@ -9,16 +9,12 @@ import Swiper from "react-native-swiper";
 
 import firebase from "firebase";
 import db from "../config/firebase_config";
-import * as Sharing from "expo-sharing";
-import { Fab, Button } from "native-base";
 import { Linking } from "react-native";
 
 // Icons
 
-import LogoutIcon from "react-native-vector-icons/MaterialIcons";
-import ShareIcon from "react-native-vector-icons/Entypo";
+import LogoutIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import MailIcon from "react-native-vector-icons/Entypo";
-import ChatIcon from "react-native-vector-icons/Entypo";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Select The Categories data

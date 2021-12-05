@@ -32,9 +32,9 @@ export default class ResearchScreen extends Component {
           showsVerticalScrollIndicator={true}
           data={AllChaptersData}
           numColumns={2}
+          keyExtractor={(item) => item.key}
           renderItem={({ item }) => (
             <TouchableOpacity
-              key={item.key}
               style={{ padding: 20, elevation: 10 }}
               onPress={() => {
                 this.props.navigation.navigate(item.navigationPath);

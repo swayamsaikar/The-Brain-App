@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Image } from "react-native";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import YoutubeVideoPlayer from "../components/YoutubeVideoPlayer";
+import TTS from "../components/TTS";
 
 export default class Cerebral_Cortex_Screen extends Component {
   constructor(props) {
@@ -55,10 +56,26 @@ export default class Cerebral_Cortex_Screen extends Component {
         </View>
 
         <View style={styles.headingAndParaStyle}>
-          <View style={{ width: "90%" }}>
-            <Text style={{ fontWeight: "bold", fontSize: 24 }}>
+          <View
+            style={{
+              width: "90%",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ fontWeight: "bold", fontSize: 20 }}>
               What is Cerebral Cortex ?
             </Text>
+            <TTS
+              text="The surface of the cerebrum is called the cortex. It has a folded
+              appearance with hills and valleys. The cortex contains 16 billion
+              neurons (the cerebellum has 70 billion = 86 billion total) that
+              are arranged in specific layers. The nerve cell bodies color the
+              cortex grey-brown giving it its name – gray matter Beneath the
+              cortex are long nerve fibers (axons) that connect brain areas to
+              each other — called white matter."
+            />
           </View>
 
           <View style={styles.paraStyle}>
@@ -76,7 +93,7 @@ export default class Cerebral_Cortex_Screen extends Component {
 
         <View style={styles.headingAndParaStyle}>
           <View style={{ width: "90%" }}>
-            <Text style={{ fontWeight: "bold", fontSize: 24 }}>
+            <Text style={{ fontWeight: "bold", fontSize: 20 }}>
               Facts About Cerebral Cortex
             </Text>
           </View>
@@ -87,12 +104,14 @@ export default class Cerebral_Cortex_Screen extends Component {
                 style={{
                   flexDirection: "row",
                   justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Text style={{ fontSize: 19, fontWeight: "bold" }}>
                   {element.id}
                 </Text>
                 <Text style={styles.paraTextStyle}>{element.text}</Text>
+                <TTS text={element.text} />
               </View>
             </View>
           ))}

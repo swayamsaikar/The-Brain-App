@@ -8,12 +8,12 @@ import {
   Image,
   Alert,
   Modal,
-  KeyboardAvoidingView,
 } from "react-native";
 import firebase from "firebase";
 import db from "../config/firebase_config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { StatusBar } from "react-native";
+import * as Crypto from "expo-crypto";
+import { StatusBar } from "expo-status-bar";
 
 export default class LoginScreen extends Component {
   constructor() {
@@ -34,13 +34,18 @@ export default class LoginScreen extends Component {
       await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(() => {
+        .then(async () => {
           db.collection("Users").add({
             UserName: this.state.name,
             Email: this.state.email,
             ButtonVisible: true,
+            // included hashing functionality where the user's passwords will be hashed using sha256 algo and then stored in the database
+            password: await Crypto.digestStringAsync(
+              Crypto.CryptoDigestAlgorithm.SHA256,
+              password
+            ),
           });
-          return Alert.alert("User SignUp SuccessFull", "", [
+          return Alert.alert("User SignUp Successfull", "", [
             {
               text: "OK",
               onPress: () => {
@@ -82,18 +87,18 @@ export default class LoginScreen extends Component {
         }}
       >
         <View style={styles.modal}>
-          <Text style={styles.SignUpTitleText}>Sign Up</Text>
-          <View style={{ marginTop: 30 }}>
+          <StatusBar hidden={true} />
+          <View style={{ marginTop: 20 }}>
             <Image
               source={require("../../assets/BrainIcon.png")}
-              style={{ width: 200, height: 200, borderRadius: 10 }}
+              style={{ width: 170, height: 170, borderRadius: 10 }}
             />
             <Text
               style={{
                 fontSize: 25,
                 fontWeight: "300",
                 color: "#ff3d00",
-                marginTop: 15,
+                marginTop: 10,
                 textAlign: "center",
                 textTransform: "capitalize",
               }}
@@ -124,6 +129,7 @@ export default class LoginScreen extends Component {
                   email: email,
                 });
               }}
+              value={this.state.email}
             />
             <TextInput
               style={styles.SignUpInput}
@@ -134,6 +140,7 @@ export default class LoginScreen extends Component {
                   password: password,
                 });
               }}
+              value={this.state.password}
             />
             <TextInput
               style={styles.SignUpInput}
@@ -144,6 +151,7 @@ export default class LoginScreen extends Component {
                   confirmPassword: confirmPassword,
                 });
               }}
+              value={this.state.confirmPassword}
             />
           </View>
 
@@ -174,6 +182,7 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {/* <StatusBar hidden={true} /> */}
         <View style={{ marginTop: 30 }}>
           <Image
             source={require("../../assets/BrainIcon.png")}
@@ -288,7 +297,7 @@ const styles = StyleSheet.create({
 
   SignUpButtonText: {
     color: "white",
-    fontSize: 20,
+    fontSize: 18,
   },
 
   SignUpTitleText: {
@@ -320,7 +329,7 @@ const styles = StyleSheet.create({
   },
 
   modal: {
-    flex: 1,
+    // flex: 1,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",

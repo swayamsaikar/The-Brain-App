@@ -34,9 +34,10 @@ export default class FoodScreen extends Component {
           style={{ marginTop: "5%" }}
           onEndReachedThreshold={0.7}
           data={FoodData}
+          initialNumToRender={5}
+          keyExtractor={(item) => item.key}
           renderItem={({ item }) => (
             <View
-              key={item.key}
               style={{ width: "90%", alignSelf: "center", borderRadius: 20 }}
             >
               <Card style={{ elevation: 10 }}>

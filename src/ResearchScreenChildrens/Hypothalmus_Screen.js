@@ -3,6 +3,7 @@ import { Image } from "react-native";
 import { View, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import YoutubeVideoPlayer from "../components/YoutubeVideoPlayer";
+import TTS from "../components/TTS";
 
 export default class Hypothalmus_Screen extends Component {
   constructor(props) {
@@ -23,10 +24,34 @@ export default class Hypothalmus_Screen extends Component {
         </View>
 
         <View style={styles.headingAndParaStyle}>
-          <View style={{ width: "90%" }}>
-            <Text style={{ fontWeight: "bold", fontSize: 24 }}>
+          <View
+            style={{
+              width: "90%",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ fontWeight: "bold", fontSize: 20 }}>
               What is Hypothalamus ?
             </Text>
+            <TTS
+              text="The hypothalamus is a small but important area of the brain formed
+              by various nucleus and nervous fibers. Through its neuronal
+              connections, it is involved in many complex functions of the
+              organism such as vegetative system control, homeostasis of the
+              organism, thermoregulation, and also in adjusting the emotional
+              behavior. The hypothalamus is involved in different daily
+              activities like eating or drinking, in the control of the body’s
+              temperature and energy maintenance, and in the process of
+              memorizing. It also modulates the endocrine system through its
+              connections with the pituitary gland. Precise anatomical
+              description along with a correct characterization of the component
+              structures is essential for understanding its functions. The
+              hypothalamus also controls body temperature, hunger, important
+              aspects of parenting and attachment behaviours, thirst, fatigue,
+              sleep, and circadian rhythms."
+            />
           </View>
 
           <View style={[styles.paraStyle, { marginBottom: 14 }]}>
