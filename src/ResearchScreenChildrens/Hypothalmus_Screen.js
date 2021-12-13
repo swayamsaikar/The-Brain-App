@@ -79,6 +79,16 @@ export default class Hypothalmus_Screen extends Component {
           title="Hypothalamus: Nuclei and Connections"
           url="https://www.youtube.com/watch?v=2UF4H6o_L48"
         />
+        <Text
+          style={{
+            fontWeight: "bold",
+            marginBottom: 5,
+            textAlign: "center",
+            color: "#8992BA",
+          }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </ScrollView>
     );
   }

@@ -1,3 +1,0 @@
-- [] Adding fonts to my Brain App
-- [] Adding Medical News Screen where i ll display the recent Medical Science Advantages
-- [] Adding a Meditation Screen in My Brain App where i ll be showing the effects of meditation in mind and body

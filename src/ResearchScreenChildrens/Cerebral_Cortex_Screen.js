@@ -123,6 +123,18 @@ export default class Cerebral_Cortex_Screen extends Component {
             url="https://www.youtube.com/watch?v=dNngOlsLuGI"
           />
         </View>
+
+        <Text
+          style={{
+            fontWeight: "bold",
+            textAlign: "center",
+            marginBottom: 10,
+            marginTop: 5,
+            color: "#8992BA",
+          }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </ScrollView>
     );
   }

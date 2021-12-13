@@ -175,6 +175,12 @@ export default class LoginScreen extends Component {
             <Text style={styles.cancelButtonText}>Cancel</Text>
           </TouchableOpacity>
         </View>
+
+        <Text
+          style={{ marginTop: "4%", textAlign: "center", color: "#8992BA" }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </Modal>
     );
   };
@@ -249,6 +255,10 @@ export default class LoginScreen extends Component {
         </View>
 
         {this.DisplayModal()}
+
+        <Text style={{ marginTop: "10%", color: "#8992BA" }}>
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </View>
     );
   }
@@ -320,7 +330,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 10.32,
     elevation: 16,
-    marginBottom: "15%",
+    marginBottom: "5%",
   },
 
   cancelButtonText: {

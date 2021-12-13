@@ -150,6 +150,17 @@ export default class Cerebrum_Screen extends Component {
             title="The 4 lobes of Cerebrum"
             url="https://www.youtube.com/watch?v=Vy8EvyQoQIE"
           />
+
+          <Text
+            style={{
+              fontWeight: "bold",
+              marginBottom: 5,
+              textAlign: "center",
+              color: "#8992BA",
+            }}
+          >
+            Ⓒ 2021-22 developed by Swayam Sai Kar
+          </Text>
         </View>
       </ScrollView>
     );

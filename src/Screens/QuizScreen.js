@@ -21,6 +21,7 @@ export default class QuizScreen extends Component {
     }
 
     var nextQuestion = this.state.questionNumber + 1;
+    // added a new delay of 2 seconds to display the answer
     setTimeout(() => {
       if (nextQuestion < questionsData.length) {
         this.setState({ questionNumber: nextQuestion });
@@ -132,6 +133,16 @@ export default class QuizScreen extends Component {
             </Text>
           </TouchableOpacity>
         </View>
+        <Text
+          style={{
+            fontWeight: "bold",
+            textAlign: "center",
+            color: "#8992BA",
+            marginTop: "20%",
+          }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </View>
     ) : (
       <View style={styles.container}>
@@ -146,14 +157,14 @@ export default class QuizScreen extends Component {
         >
           <View style={[styles.questionText]}>
             <Text style={{ color: "#8992BA", fontSize: 25, fontWeight: "900" }}>
-              Question {this.state.questionNumber}
+              Question {this.state.questionNumber + 1}
             </Text>
             <Text style={{ color: "#8992BA", fontSize: 17, marginTop: 5 }}>
               /{questionsData.length}
             </Text>
           </View>
 
-          <Text style={{ fontSize: 40, color: "#fff", marginTop: 50 }}>|</Text>
+          <Text style={{ fontSize: 40, color: "#fff", marginTop: 25 }}>|</Text>
 
           {/* This is the score text */}
           <View style={styles.questionText}>
@@ -172,7 +183,7 @@ export default class QuizScreen extends Component {
           style={{
             borderBottomColor: "#3C4465",
             borderBottomWidth: 1,
-            marginTop: 20,
+            marginTop: 5,
             width: "80%",
             alignSelf: "center",
           }}
@@ -200,7 +211,7 @@ export default class QuizScreen extends Component {
 
         <View
           style={{
-            marginTop: "25%",
+            marginTop: "15%",
             width: "80%",
             alignSelf: "center",
           }}
@@ -215,9 +226,12 @@ export default class QuizScreen extends Component {
                   onPress={() => {
                     this.handleOptionButtonClick(item.isCorrect);
                     this.setState({ buttonClicked: true });
+
+                    // so here we are finding the index of the correct answer and storing it in the index state
                     var index = questionsData[
                       this.state.questionNumber
                     ].options.findIndex((item) => item.isCorrect === true);
+
                     this.setState({ index: index });
                   }}
                   disabled={this.state.buttonClicked}
@@ -248,11 +262,12 @@ export default class QuizScreen extends Component {
                 flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",
+                marginTop: 10,
               }}
             >
               <Text
                 style={{
-                  color: "#F4F4F6",
+                  color: "#55efc4",
                   fontSize: 20,
                   fontWeight: "900",
                   letterSpacing: 0.6,
@@ -262,7 +277,7 @@ export default class QuizScreen extends Component {
               </Text>
               <Text
                 style={{
-                  color: "#F4F4F6",
+                  color: "#55efc4",
                   fontSize: 20,
                   fontWeight: "900",
                   letterSpacing: 0.6,
@@ -278,6 +293,19 @@ export default class QuizScreen extends Component {
             </View>
           ) : null}
         </View>
+
+        <Text
+          style={{
+            fontWeight: "bold",
+            textAlign: "center",
+            color: "#8992BA",
+            marginTop: 10,
+            marginLeft: 5,
+            marginBottom: 5,
+          }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </View>
     );
   }
@@ -291,8 +319,7 @@ const styles = StyleSheet.create({
   questionText: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: "15%",
-    // marginLeft: "10%",
+    marginTop: "9%",
   },
 
   optionsView: {

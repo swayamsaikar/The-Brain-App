@@ -35,10 +35,17 @@ const categoriesData = [
   },
 
   {
-    displayText: "Want a healthy Brain ?",
+    displayText: "Want A Healthy Brain ?",
     img: require("../../assets/healthyBrain.png"),
     backgroundColor: "#ffeaa7",
     navigateTo: "Healthy Brain",
+  },
+
+  {
+    displayText: "Want To Know The Current Medical Advancements ? ",
+    img: require("../../assets/HealthNewsIcon.png"),
+    backgroundColor: "#63cdda",
+    navigateTo: "News",
   },
 ];
 
@@ -70,7 +77,8 @@ export default class MainScreen extends Component {
 
   getCurrentUsersData = async () => {
     const CurrentUserEmail = await AsyncStorage.getItem("currentUserEmail");
-    db.collection("Users")
+    await db
+      .collection("Users")
       .where("Email", "==", CurrentUserEmail)
       .onSnapshot((collection) => {
         collection.docs.map((doc) => {
@@ -104,10 +112,31 @@ export default class MainScreen extends Component {
           <Header
             backgroundColor="#a29bfe"
             style={{ padding: 10 }}
-            centerComponent={{
-              text: "The Brain",
-              style: { fontSize: 24, color: "#fff", fontWeight: "bold" },
-            }}
+            centerComponent={() => (
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  source={require("../../assets/BrainIcon.png")}
+                  style={{ width: 40, height: 40, borderRadius: 20 }}
+                />
+
+                <Text
+                  style={{
+                    fontSize: 24,
+                    color: "#fff",
+                    fontWeight: "bold",
+                    marginLeft: 10,
+                  }}
+                >
+                  The Brain
+                </Text>
+              </View>
+            )}
             rightComponent={
               <LogoutIcon
                 name="logout"
@@ -125,18 +154,44 @@ export default class MainScreen extends Component {
           <Header
             backgroundColor="#a29bfe"
             style={{ padding: 10 }}
-            centerComponent={{
-              text: "The Brain",
-              style: { fontSize: 24, color: "#fff", fontWeight: "bold" },
-            }}
+            centerComponent={() => (
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  source={require("../../assets/BrainIcon.png")}
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                  }}
+                />
+
+                <Text
+                  style={{
+                    fontSize: 24,
+                    color: "#fff",
+                    fontWeight: "bold",
+                    marginLeft: 10,
+                  }}
+                >
+                  The Brain
+                </Text>
+              </View>
+            )}
             rightComponent={
               <LogoutIcon
                 name="logout"
                 size={35}
                 color="#000"
-                onPress={() => {
+                onPress={async () => {
                   firebase.auth().signOut();
                   this.props.navigation.replace("Sign In");
+                  await AsyncStorage.removeItem("isLoggedIn");
                 }}
               />
             }
@@ -188,7 +243,7 @@ export default class MainScreen extends Component {
         <View
           style={{
             borderRadius: 20,
-            margin: 8.5,
+            margin: 5,
             borderColor: "black",
             backgroundColor: "#dfe6e9",
             padding: 10,
@@ -204,7 +259,7 @@ export default class MainScreen extends Component {
               fontWeight: "bold",
             }}
           >
-            Select The Categories That you want To Read About Brain !
+            Select the categories that you want to read about the Brain!
           </Text>
         </View>
 
@@ -253,6 +308,18 @@ export default class MainScreen extends Component {
             ))}
           </Swiper>
         </View>
+
+        <Text
+          style={{
+            fontWeight: "bold",
+            marginTop: 5,
+            marginBottom: 10,
+            textAlign: "center",
+            color: "#a29bfe",
+          }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </ImageBackground>
     );
   }

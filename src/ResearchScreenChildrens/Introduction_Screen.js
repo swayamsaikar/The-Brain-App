@@ -194,6 +194,17 @@ export default class Introduction_Screen extends Component {
             />
           </View>
         </View>
+        <Text
+          style={{
+            fontWeight: "bold",
+            marginTop: 3,
+            marginBottom: 7,
+            textAlign: "center",
+            color: "#8992BA",
+          }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </ScrollView>
     );
   }

@@ -16,15 +16,18 @@ export default class ResearchScreen extends Component {
         <View
           style={{
             borderRadius: 20,
-            margin: 20,
+            marginTop: 10,
+            marginHorizontal: 20,
             borderColor: "black",
             backgroundColor: "#fff",
             padding: 10,
             elevation: 10,
           }}
         >
-          <Text style={{ fontSize: 16, textAlign: "center" }}>
-            Choose The Topics That you want To Read About Brain !
+          <Text
+            style={{ fontSize: 16, textAlign: "center", fontWeight: "bold" }}
+          >
+            Choose the topics that you want to read about Brain !
           </Text>
         </View>
 
@@ -33,6 +36,7 @@ export default class ResearchScreen extends Component {
           data={AllChaptersData}
           numColumns={2}
           keyExtractor={(item) => item.key}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={{ padding: 20, elevation: 10 }}
@@ -57,6 +61,17 @@ export default class ResearchScreen extends Component {
             </TouchableOpacity>
           )}
         />
+        <Text
+          style={{
+            fontWeight: "bold",
+            textAlign: "center",
+            marginTop: 5,
+            marginBottom: 5,
+            color: "#8992BA",
+          }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai kar
+        </Text>
       </View>
     );
   }

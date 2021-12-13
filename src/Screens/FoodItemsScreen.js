@@ -14,7 +14,7 @@ export default class FoodScreen extends Component {
 
         <View
           style={{
-            marginTop: "20%",
+            marginTop: "5%",
             padding: 10,
             backgroundColor: "#627cf3",
             width: "90%",
@@ -24,7 +24,7 @@ export default class FoodScreen extends Component {
           }}
         >
           <Text style={{ textAlign: "center", color: "#dee3fc", fontSize: 15 }}>
-            These are some tips To Improve The Power Of Brain
+            These are some tips to improve the power of Brain
           </Text>
         </View>
 
@@ -79,6 +79,18 @@ export default class FoodScreen extends Component {
             </View>
           )}
         />
+        <Text
+          style={{
+            fontWeight: "bold",
+            textAlign: "center",
+            color: "#8992BA",
+            marginTop: 10,
+            marginLeft: 5,
+            marginBottom: 10,
+          }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </View>
     );
   }

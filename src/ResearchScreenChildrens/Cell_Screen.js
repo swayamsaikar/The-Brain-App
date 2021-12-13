@@ -241,6 +241,17 @@ export default class Cell_Screen extends Component {
               title="Types of Cells Present in the Brain"
               url="https://www.youtube.com/watch?v=AwES6R1_9PM"
             />
+
+            <Text
+              style={{
+                fontWeight: "bold",
+                marginTop: 7,
+                textAlign: "center",
+                color: "#8992BA",
+              }}
+            >
+              Ⓒ 2021-22 developed by Swayam Sai Kar
+            </Text>
           </View>
         </View>
       </ScrollView>

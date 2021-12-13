@@ -121,6 +121,16 @@ export default class Neuron_Screen extends Component {
             />
           </View>
         </View>
+        <Text
+          style={{
+            fontWeight: "bold",
+            marginBottom: 10,
+            textAlign: "center",
+            color: "#8992BA",
+          }}
+        >
+          Ⓒ 2021-22 developed by Swayam Sai Kar
+        </Text>
       </ScrollView>
     );
   }
