@@ -20,7 +20,7 @@ import LoginScreen from "./Screens/LoginScreen";
 import LoadingScreen from "./Screens/LoadingScreen";
 import NewsScreen from "./Screens/NewsScreen";
 import test from "../test";
-import pp from "../pp";
+import ChatScreen from "./Screens/ChatScreen";
 
 const Stack = createStackNavigator();
 
@@ -30,7 +30,7 @@ export default class Navigator extends Component {
       <NavigationContainer>
         <Stack.Navigator
           // Loading
-          initialRouteName="pp"
+          initialRouteName="Loading"
           screenOptions={{
             headerStyle: {
               backgroundColor: "#a29bfe",
@@ -64,9 +64,9 @@ export default class Navigator extends Component {
             options={{ headerShown: false }}
           />
 
+          <Stack.Screen name="Chat" component={ChatScreen} />
           {/* test */}
           <Stack.Screen name="Test" component={test} />
-          <Stack.Screen name="pp" component={pp} />
 
           <Stack.Screen name="Healthy Brain" component={FoodItemsScreen} />
 

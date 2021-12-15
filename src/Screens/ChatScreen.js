@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
 import { GiftedChat, Send, Bubble } from "react-native-gifted-chat";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -32,12 +31,61 @@ class pp extends Component {
     var req = await fetch(url);
     var res = await req.json();
 
-    // At this moment i could not believe at myself and also i was fee proud of me
-    for (var i = 0; i < res.queryresult.pods.length; i++) {
-      // ... is a spread operator
-      this.setState({
-        answer: [res.queryresult.pods[i], ...this.state.answer].reverse(),
+    if (res.pods) {
+      // At this moment i could not believe at myself and also i was fee proud of me
+      for (var i = 0; i < res.queryresult.pods.length; i++) {
+        // ... is a spread operator
+        this.setState({
+          answer: [res.queryresult.pods[i], ...this.state.answer].reverse(),
+        });
+      }
+    } else {
+      this.setState({ error: "Something went wrong in finding your answer" });
+    }
+  };
+
+  sendReply = () => {
+    var answer;
+    if (this.state.answer.length === 2) {
+      answer = [this.state.answer[1]];
+    } else if (this.state.answer.length >= 5) {
+      answer = [
+        this.state.answer[1],
+        this.state.answer[2],
+        this.state.answer[3],
+      ];
+    } else if (this.state.answer.length > 2) {
+      answer = [
+        this.state.answer[1],
+        this.state.answer[2],
+        this.state.answer[3],
+      ];
+    }
+
+    if (this.state.error === "") {
+      answer.map((element) => {
+        const msg = {
+          _id: this.state.messages.length + 1,
+          text: element.subpods[0].plaintext.replace(/\\n/g, ",").trim(),
+          createdAt: new Date(),
+          user: { _id: 2, name: "shit" },
+        };
+        this.setState((previousState) => ({
+          messages: GiftedChat.append(previousState.messages, [msg]),
+        }));
+        this.setState({ answer: [], question: "" });
       });
+    } else {
+      const msg = {
+        _id: this.state.messages.length + 1,
+        text: this.state.error,
+        createdAt: new Date(),
+        user: { _id: 2, name: "shit" },
+      };
+      this.setState((previousState) => ({
+        messages: GiftedChat.append(previousState.messages, [msg]),
+      }));
+      this.setState({ answer: [], question: "" });
     }
   };
 
@@ -51,7 +99,7 @@ class pp extends Component {
     }));
     await this.getData(messages[0].text).then(() => {
       console.log(this.state.answer);
-      this.setState({ answer: [], question: "" });
+      this.sendReply();
     });
   };
 

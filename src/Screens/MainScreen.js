@@ -47,6 +47,12 @@ const categoriesData = [
     backgroundColor: "#63cdda",
     navigateTo: "News",
   },
+  {
+    displayText: "Ask me anything!",
+    img: require("../../assets/chatbotImage.png"),
+    backgroundColor: "#30BBF9",
+    navigateTo: "Chat",
+  },
 ];
 
 // Image Carousel
