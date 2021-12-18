@@ -176,9 +176,7 @@ export default class LoginScreen extends Component {
           </TouchableOpacity>
         </View>
 
-        <Text
-          style={{ marginTop: "4%", textAlign: "center", color: "#8992BA" }}
-        >
+        <Text style={{ textAlign: "center", color: "#8992BA" }}>
           Ⓒ 2021-22 developed by Swayam Sai Kar
         </Text>
       </Modal>
@@ -256,7 +254,7 @@ export default class LoginScreen extends Component {
 
         {this.DisplayModal()}
 
-        <Text style={{ marginTop: "10%", color: "#8992BA" }}>
+        <Text style={{ marginTop: "8%", color: "#8992BA" }}>
           Ⓒ 2021-22 developed by Swayam Sai Kar
         </Text>
       </View>

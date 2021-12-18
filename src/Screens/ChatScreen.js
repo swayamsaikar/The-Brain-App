@@ -31,8 +31,8 @@ class pp extends Component {
     var req = await fetch(url);
     var res = await req.json();
 
-    if (res.pods) {
-      // At this moment i could not believe at myself and also i was fee proud of me
+    if (res.queryresult.pods) {
+      // At this moment i could not believe at myself and also i was proud of me
       for (var i = 0; i < res.queryresult.pods.length; i++) {
         // ... is a spread operator
         this.setState({
@@ -48,11 +48,14 @@ class pp extends Component {
     var answer;
     if (this.state.answer.length === 2) {
       answer = [this.state.answer[1]];
-    } else if (this.state.answer.length >= 5) {
+    } else if (this.state.answer.length > 5) {
       answer = [
         this.state.answer[1],
         this.state.answer[2],
         this.state.answer[3],
+        this.state.answer[4],
+        this.state.answer[5],
+        this.state.answer[6],
       ];
     } else if (this.state.answer.length > 2) {
       answer = [
@@ -85,18 +88,15 @@ class pp extends Component {
       this.setState((previousState) => ({
         messages: GiftedChat.append(previousState.messages, [msg]),
       }));
-      this.setState({ answer: [], question: "" });
+      this.setState({ answer: [], question: "", error: "" });
     }
-  };
-
-  componentDidUpdate = () => {
-    console.log(this.state.answer.length);
   };
 
   onSend = async (messages = []) => {
     this.setState((previousState) => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }));
+
     await this.getData(messages[0].text).then(() => {
       console.log(this.state.answer);
       this.sendReply();

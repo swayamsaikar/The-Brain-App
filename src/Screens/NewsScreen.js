@@ -70,64 +70,59 @@ class NewsScreen extends Component {
             <PacmanIndicator size={100} color="#a29bfe" />
           </View>
         ) : (
-          <View>
-            <FlatList
-              data={this.state.HealthNews.reverse()}
-              keyExtractor={(item) => item.publishedAt}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  onPress={() => {
-                    Linking.openURL(item.url);
+          <FlatList
+            data={this.state.HealthNews.reverse()}
+            keyExtractor={(item) => item.publishedAt}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => {
+                  Linking.openURL(item.url);
+                }}
+              >
+                <View
+                  style={{
+                    margin: 10,
+                    borderRadius: 10,
+                    marginVertical: 7,
+                    padding: 10,
+                    backgroundColor: "#ffffff",
+                    elevation: 15,
                   }}
                 >
-                  <View
-                    style={{
-                      margin: 10,
-                      borderRadius: 10,
-                      marginVertical: 7,
-                      padding: 10,
-                      backgroundColor: "#ffffff",
-                      elevation: 15,
-                    }}
-                  >
-                    <View style={styles.card}>
-                      <Image
-                        source={{
-                          uri:
-                            item.urlToImage !== null
-                              ? item.urlToImage
-                              : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
+                  <View style={styles.card}>
+                    <Image
+                      source={{
+                        uri:
+                          item.urlToImage !== null
+                            ? item.urlToImage
+                            : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
+                      }}
+                      style={styles.Image}
+                    />
+                    <View style={{ width: "70%", marginLeft: 20 }}>
+                      <Text
+                        style={{
+                          paddingVertical: 4,
+                          fontWeight: "bold",
+                          fontSize: 15,
                         }}
-                        style={styles.Image}
-                      />
-                      <View style={{ width: "70%", marginLeft: 20 }}>
-                        <Text
-                          style={{
-                            paddingVertical: 4,
-                            fontWeight: "bold",
-                            fontSize: 15,
-                          }}
-                          numberOfLines={1}
-                        >
-                          {item.title}
-                        </Text>
+                        numberOfLines={1}
+                      >
+                        {item.title}
+                      </Text>
 
-                        <Text
-                          numberOfLines={15}
-                          style={{ fontSize: 12, opacity: 0.6 }}
-                        >
-                          {item.description
-                            ? item.description
-                            : "No Description"}
-                        </Text>
-                        <Text>{item.publishedAt}</Text>
-                      </View>
+                      <Text
+                        numberOfLines={15}
+                        style={{ fontSize: 12, opacity: 0.6 }}
+                      >
+                        {item.description ? item.description : "No Description"}
+                      </Text>
                     </View>
                   </View>
-                </TouchableOpacity>
-              )}
-            />
-          </View>
+                </View>
+              </TouchableOpacity>
+            )}
+          />
         )}
       </View>
     );

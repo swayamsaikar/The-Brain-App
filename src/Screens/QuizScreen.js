@@ -29,7 +29,7 @@ export default class QuizScreen extends Component {
         this.setState({ showEndScreen: true });
       }
       this.setState({ buttonClicked: false });
-    }, 1);
+    }, 1000);
   };
 
   render() {
@@ -45,7 +45,7 @@ export default class QuizScreen extends Component {
           style={{
             backgroundColor: "lightblue",
             width: "85%",
-            height: "40%",
+            height: "50%",
             marginTop: "30%",
             borderRadius: 10,
             borderColor: "#fff",
@@ -164,7 +164,7 @@ export default class QuizScreen extends Component {
             </Text>
           </View>
 
-          <Text style={{ fontSize: 40, color: "#fff", marginTop: 25 }}>|</Text>
+          <Text style={{ fontSize: 40, color: "#fff", marginTop: 15 }}>|</Text>
 
           {/* This is the score text */}
           <View style={styles.questionText}>
@@ -194,7 +194,7 @@ export default class QuizScreen extends Component {
             alignItems: "center",
             marginLeft: "10%",
             width: "80%",
-            marginTop: "7%",
+            marginTop: "5%",
           }}
         >
           <Text
@@ -211,7 +211,7 @@ export default class QuizScreen extends Component {
 
         <View
           style={{
-            marginTop: "15%",
+            marginTop: "10%",
             width: "80%",
             alignSelf: "center",
           }}
@@ -299,9 +299,9 @@ export default class QuizScreen extends Component {
             fontWeight: "bold",
             textAlign: "center",
             color: "#8992BA",
-            marginTop: 10,
+            marginTop: 5,
             marginLeft: 5,
-            marginBottom: 5,
+            // marginBottom: 5,
           }}
         >
           Ⓒ 2021-22 developed by Swayam Sai Kar
@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
   questionText: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: "9%",
+    marginTop: "5%",
   },
 
   optionsView: {

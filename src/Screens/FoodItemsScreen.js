@@ -84,9 +84,9 @@ export default class FoodScreen extends Component {
             fontWeight: "bold",
             textAlign: "center",
             color: "#8992BA",
-            marginTop: 10,
+            marginTop: 20,
             marginLeft: 5,
-            marginBottom: 10,
+            // marginBottom: 5,
           }}
         >
           Ⓒ 2021-22 developed by Swayam Sai Kar

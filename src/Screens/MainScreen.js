@@ -220,7 +220,7 @@ export default class MainScreen extends Component {
         <View
           style={{
             marginTop: 10,
-            height: "42.2%",
+            height: "41.5%",
             width: "100%",
           }}
         >
@@ -231,7 +231,7 @@ export default class MainScreen extends Component {
 
                 <Text
                   style={{
-                    fontSize: 22,
+                    fontSize: 18,
                     fontWeight: "bold",
                     color: "#000",
                     textAlign: "center",
@@ -249,7 +249,7 @@ export default class MainScreen extends Component {
         <View
           style={{
             borderRadius: 20,
-            margin: 5,
+            marginBottom: 4,
             borderColor: "black",
             backgroundColor: "#dfe6e9",
             padding: 10,
@@ -348,8 +348,9 @@ const styles = StyleSheet.create({
   },
 
   TouchableTextStyle: {
-    fontSize: 21,
+    fontSize: 19,
     textAlign: "center",
+    fontWeight: "bold",
   },
   fab: {
     padding: 20,
