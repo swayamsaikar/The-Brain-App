@@ -1,3 +1,5 @@
+// this is the chapters Data array where the name,key,color,image,width,height,navigationPath is stored and
+//  i have only imported this chaptersData and created a flatList where i have displayed a card for every element with its name,color,image width,height etc
 const data = [
   {
     key: 1,

@@ -32,11 +32,11 @@ export default class ResearchScreen extends Component {
         </View>
 
         <FlatList
-          showsVerticalScrollIndicator={true}
+          // showsVerticalScrollIndicator={true}
           data={AllChaptersData}
           numColumns={2}
           keyExtractor={(item) => item.key}
-          showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={true}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={{ padding: 20, elevation: 10 }}

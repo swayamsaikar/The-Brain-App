@@ -1,7 +1,0 @@
-  {this.state.answer
-          ? this.state.answer.map((element) => (
-              <View>
-                <Text>{element.subpods[0].plaintext.replace(/\n/gi, "")}</Text>
-              </View>
-            ))
-          : null}

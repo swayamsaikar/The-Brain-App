@@ -238,7 +238,7 @@ export default class Cell_Screen extends Component {
             </View>
             <YoutubeVideoPlayer
               imgPath={require("../../youtubeThumbnails/CellsScreenThumbnail.png")}
-              title="Types of Cells Present in the Brain"
+              title="Types of Cells in the Brain"
               url="https://www.youtube.com/watch?v=AwES6R1_9PM"
             />
 

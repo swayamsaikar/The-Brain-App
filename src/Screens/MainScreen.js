@@ -48,10 +48,16 @@ const categoriesData = [
     navigateTo: "News",
   },
   {
-    displayText: "Ask me anything!",
+    displayText: "Ask Me Anything!",
     img: require("../../assets/chatbotImage.png"),
     backgroundColor: "#30BBF9",
     navigateTo: "Chat",
+  },
+  {
+    displayText: "Search And Find A Job Here!",
+    img: require("../../assets/JobIcon.png"),
+    backgroundColor: "#fab1a0",
+    navigateTo: "Job",
   },
 ];
 

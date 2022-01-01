@@ -1,10 +1,11 @@
+// importing react
 import React, { Component } from "react";
 
 // Imported All The Navigation Packages
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-// imported All The Screens
 
+// imported All The Screens
 import MainScreen from "./Screens/MainScreen";
 import ResearchScreen from "./Screens/ResearchScreen";
 import QuizScreen from "./Screens/QuizScreen";
@@ -21,16 +22,19 @@ import LoadingScreen from "./Screens/LoadingScreen";
 import NewsScreen from "./Screens/NewsScreen";
 import test from "../test";
 import ChatScreen from "./Screens/ChatScreen";
+import JobSearchScreen from "./Screens/JobSearchScreen";
 
+// creating an instance of stackNavigator
 const Stack = createStackNavigator();
 
 export default class Navigator extends Component {
   render() {
     return (
       <NavigationContainer>
+        {/* here inside the Stack.Navigator i have added all the screen (components) along with their styles and names */}
         <Stack.Navigator
           // Loading
-          initialRouteName="Loading"
+          initialRouteName="Home"
           screenOptions={{
             headerStyle: {
               backgroundColor: "#a29bfe",
@@ -62,6 +66,13 @@ export default class Navigator extends Component {
             name="Home"
             component={MainScreen}
             options={{ headerShown: false }}
+          />
+
+          {/* job search screen */}
+          <Stack.Screen
+            name="Job"
+            component={JobSearchScreen}
+            options={{ headerTitle: "Search for jobs" }}
           />
 
           <Stack.Screen name="Chat" component={ChatScreen} />

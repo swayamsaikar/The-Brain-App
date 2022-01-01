@@ -1,3 +1,7 @@
+// this is the Quiz question Data for the quiz screen
+// here the question is there with its options
+// the correct answer has the isCorrect property as true
+
 const questionsData = [
   {
     question:

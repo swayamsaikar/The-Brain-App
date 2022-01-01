@@ -1,3 +1,5 @@
+// This is the Text to Speech component which i have implemented through the help of expo-Speech API
+
 import React, { Component } from "react";
 import { View } from "react-native";
 import { AntDesign } from "react-native-vector-icons";

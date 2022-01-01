@@ -11,13 +11,15 @@ import {
   FlatList,
 } from "react-native";
 
+// these are from the config gile where the api_key,country_code and all those secret things lie
 import {
   articles_url,
   country_code,
   api_key,
   news_category,
-} from "../config/rest_config";
+} from "../config/news_config";
 
+// imported the beautiful looking Pacman indicator from react-native-indicators
 import { PacmanIndicator } from "react-native-indicators";
 
 class NewsScreen extends Component {
@@ -30,17 +32,27 @@ class NewsScreen extends Component {
   }
 
   getNewsData = async () => {
+    // this getNewsData() function ll fetch the recent health news articles from an API service called Newsapi
     try {
+      // this is the proper url
       const url = `${articles_url}?country=${country_code}&category=${news_category}&apiKey=${api_key}`;
+
+      // here i am making the request and getting the raw data back and it is stored in the req variable and then we have to convert it to JSON
       var req = await fetch(url);
+
+      // converting the raw data to JSON and storing the JSON data in res variable
       var res = await req.json();
+
+      // and then storing the Json data in HealthNews state array and also making the loading false which by default was true
       this.setState({ loading: false, HealthNews: res.articles });
     } catch (error) {
+      // in case any error the error ll be alerted to the user
       alert(error.message);
     }
   };
 
   componentDidMount = () => {
+    // here i am calling this getData() function when the app starts by default
     this.getNewsData();
   };
 
@@ -71,6 +83,8 @@ class NewsScreen extends Component {
           </View>
         ) : (
           <FlatList
+            // looping through the healthnews state array for every news element create a card with every elements image,title,description,styles etc.
+
             data={this.state.HealthNews.reverse()}
             keyExtractor={(item) => item.publishedAt}
             renderItem={({ item }) => (

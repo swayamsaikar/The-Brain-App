@@ -1,3 +1,6 @@
+// this is the data of all the foods that you should eat to improve the power of your brain
+// In the foodItemScreen i have imported this FoodData array and created a FlatList where i ll display a card for each and every element with its title,Image and Paragraph
+
 const FoodData = [
   {
     key: 1,

@@ -1,3 +1,4 @@
+// This is the header component
 import React, { Component } from "react";
 import { Header } from "react-native-elements";
 export class MyHeader extends Component {

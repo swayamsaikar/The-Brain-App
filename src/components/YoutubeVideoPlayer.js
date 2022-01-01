@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Linking, View, Image, Text, TouchableOpacity } from "react-native";
 
+// This YoutubeVideoPlayer component is a kind of a template which i can reuse by giving the title,url and thumbnail of the video and it ll automatically show the video
 class YoutubeVideoPlayer extends Component {
   constructor(props) {
     super(props);
