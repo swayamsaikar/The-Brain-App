@@ -154,9 +154,9 @@ export default class MainScreen extends Component {
                 name="logout"
                 size={35}
                 color="#000"
-                onPress={() => {
-                  AsyncStorage.removeItem("isLoggedIn");
+                onPress={async () => {
                   firebase.auth().signOut();
+                  await AsyncStorage.removeItem("isLoggedIn");
                   this.props.navigation.replace("Sign In");
                 }}
               />
@@ -202,8 +202,8 @@ export default class MainScreen extends Component {
                 color="#000"
                 onPress={async () => {
                   firebase.auth().signOut();
-                  this.props.navigation.replace("Sign In");
                   await AsyncStorage.removeItem("isLoggedIn");
+                  this.props.navigation.replace("Sign In");
                 }}
               />
             }

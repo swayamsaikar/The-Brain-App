@@ -34,7 +34,7 @@ export default class Navigator extends Component {
         {/* here inside the Stack.Navigator i have added all the screen (components) along with their styles and names */}
         <Stack.Navigator
           // Loading
-          initialRouteName="Home"
+          initialRouteName="Loading"
           screenOptions={{
             headerStyle: {
               backgroundColor: "#a29bfe",
